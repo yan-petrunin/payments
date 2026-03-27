@@ -1,6 +1,6 @@
 from src.app.core.db.models.base import Base
 from sqlalchemy.orm import MappedColumn, mapped_column, relationship
-from sqlalchemy import BigInteger, Integer, Text, String, DateTime, func, UUID, Float, ForeignKey
+from sqlalchemy import BigInteger, Text, String, DateTime, func, UUID, Float, ForeignKey
 from sqlalchemy.dialects.postgresql import JSONB
 
 class Payment(Base):
@@ -11,7 +11,7 @@ class Payment(Base):
     sum: MappedColumn[float] = mapped_column(Float, nullable=False)
     currency_id: MappedColumn[int] = mapped_column(ForeignKey("currencies.id"))
     description: MappedColumn[str] = mapped_column(Text)
-    metadata: MappedColumn[JSONB] = mapped_column(JSONB)
+    payment_metadata: MappedColumn[JSONB] = mapped_column(JSONB)
     status_id: MappedColumn[int] = mapped_column(ForeignKey("payment_statuses.id"))
     count: MappedColumn[int] = mapped_column(BigInteger, nullable=False, default=0)
     webhook_url: MappedColumn[str] = mapped_column(String(150), nullable=False)
