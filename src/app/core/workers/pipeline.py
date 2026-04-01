@@ -10,9 +10,5 @@ class BasePipeline(ABC):
         pass
     
     @abstractmethod
-    async def publish_payment():
-        pass
-    
-    @abstractmethod
     async def check_payment():
         pass
