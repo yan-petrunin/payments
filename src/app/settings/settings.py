@@ -27,6 +27,12 @@ class Settings(BaseSettings):
         return (
             f"amqp://{self.rabbitmq_user}:{self.rabbitmq_password}@{self.rabbitmq_host}:{self.rabbitmq_port}/"
         )
+    @property
+    def payment_topic(self) -> str:
+        return "payments.new"
+    @property
+    def payment_dlq_topic(self) -> str:
+        return "payments.dlq"
     
     @property
     def db_helper(self) -> DatabaseHelper:
